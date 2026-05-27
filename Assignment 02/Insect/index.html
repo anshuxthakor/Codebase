@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insect</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="nav-left">
+        <h1>Insect</h1>
+        <input type="text" placeholder="Search..." />
+      </div>
+      <div class="nav-right">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="left">
+        <p class="classification-label">Classification</p>
+        <ul class="classify-list">
+          <li><span>Class:</span> Insecta</li>
+          <li><span>Order:</span> Coleoptera</li>
+          <li><span>Family:</span> Cerambycidae</li>
+          <li><span>Sub-Family:</span> Cerambycinae</li>
+          <li><span>Tribe:</span> Callicromatini</li>
+          <li><span>Genus:</span> Pachyteria</li>
+        </ul>
+      </div>
+      <img src="./assets/Insect.png" alt="Insect Image" class="center-img" />
+      <div class="right">
+        <div class="right-wrapper">
+          <h2 class="species-name">Pachyteria equestris</h2>
+          <div class="specimen-row">
+            <div class="specimen-img-wrap">
+              <img
+                src="./assets/Beetle.png"
+                alt="Beetle Image"
+                class="specimen-img"
+              />
+              <p class="specimen-size">32 mm</p>
+            </div>
+            <div class="specimen-divider"></div>
+            <ul class="specimen-info">
+              <li>
+                <div class="info-row">
+                  <i class="ti ti-map-pin" aria-hidden="true"></i>
+                  <span>Locality:</span>
+                </div>
+                <p class="info-val">Malaysia</p>
+              </li>
+              <li>
+                <div class="info-row">
+                  <i class="ti ti-gender-male" aria-hidden="true"></i>
+                  <span>Sex:</span>
+                </div>
+                <p class="info-val">Male</p>
+              </li>
+              <li>
+                <div class="info-row">
+                  <i class="ti ti-ruler" aria-hidden="true"></i>
+                  <span>Size:</span>
+                </div>
+                <p class="info-val">32 mm / 12 mm</p>
+              </li>
+            </ul>
+          </div>
+          <p class="price">$5.99</p>
+          <div class="toggles">
+            <label class="toggle-row">
+              <input type="checkbox" checked />
+              <span class="slider"></span>
+              View detailed antennae
+            </label>
+            <label class="toggle-row">
+              <input type="checkbox" />
+              <span class="slider"></span>
+              View underside
+            </label>
+          </div>
+          <button class="add-btn">Add to collection</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
