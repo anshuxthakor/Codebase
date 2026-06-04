@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue Light';
+  font-weight: 500;
+  color: white;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #1B1E20;
+  text-align: center;
+}
+
+h1 {
+  margin: 20px;
+}
