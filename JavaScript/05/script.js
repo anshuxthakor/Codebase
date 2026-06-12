@@ -208,3 +208,44 @@ for (let i = 0; i <= 100; i=i+2){
   array12.push(i)
 }
 console.log(array12);
+
+// Non-Mutating methods (do not change the original array)
+
+var arrey1 = [1, 2, 3, 4, 5];
+var arrey2 = [6, 7, 8];
+
+console.log(arrey1); // Logs [1, 2, 3, 4, 5] - original array is unchanged
+console.log(arrey1.slice(1, 4)); // Removes 4 elements starting from index 1, but since we are not assigning the result to a new variable, the original array remains unchanged
+
+var brr = arrey1.concat(arrey2); // Logs [1, 2, 3, 4, 5, 6, 7, 8] - returns a new array without changing the original array
+console.log(brr);
+
+console.log(arrey2.includes(9)); // Logs false - checks if 9 is present
+
+console.log(arrey1.indexOf(4)); // Logs 3 - returns the index of the first occurrence of 4
+console.log(arrey2.indexOf(9)); // Logs -1 - Since 9 is not present, it returns -1
+
+console.log(arrey1.join('-')); // Logs '1-2-3-4-5' - joins the elements of the array into a string with '-' as a separator
+
+var str = 'Anshu Thakor';
+console.log(str.split(' ')); // Logs ['Anshu', 'Thakor'] - splits the string into an array of substrings based on the separator (space in this case)
+
+// Split --> String to Array
+// Join --> Array to String
+
+// Spread Operator
+// Creates a new array by spreading the elements of the original array, allowing you to create a copy of the array or combine it with other arrays without modifying the original array.
+
+// [arr[0], arr[1], arr[2], arr[3], ...., arr[arr.length - 1]] --> [...arr]
+
+let arey = [1, 2, 3, 4, 5];
+let newArey1 = [...arey];  
+let newArey2 = ['Anshu', ...arey, 'Thakor'];
+console.log(newArey1);
+console.log(newArey2);
+
+// [...arey] --> [1, 2, 3, 4, 5]
+// [-1, 0, ...arey] --> [-1, 0, 1, 2, 3, 4, 5]
+// [...arey, 6, 7] --> [1, 2, 3, 4, 5, 6, 7]
+// [...arey, ...newArey] --> [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+// ['Anshu', ...arey, 'Thakor'] --> ['Anshu', 1, 2, 3, 4, 5, 'Thakor']
