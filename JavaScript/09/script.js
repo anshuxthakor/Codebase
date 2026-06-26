@@ -46,6 +46,27 @@ var obj3 = {
 obj3.getIntro(); // object
 
 
+let place = {
+  placeName: 'Office',
+  behavior: 'Proffessional',
+  sayHello: function () {
+    const insidePlace = {
+      placeName: 'Meeting Room',
+      behavior: 'Roasting',
+      infrontOfFriends: function () {
+        console.log(this.behavior);
+      },
+      infrontOfClients: () => {
+        console.log(this.behavior);
+      }
+    }
+    insidePlace.infrontOfFriends(); // Roasting
+    insidePlace.infrontOfClients(); // Proffessional
+  }
+};
+place.sayHello();
+
+
 // Function Sharing (Explicit Binding)
 
 // call
