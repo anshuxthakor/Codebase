@@ -32,3 +32,26 @@ head.style.paddingBottom = "1rem";
 
 demo.style.color = "blue";
 demo.style.fontSize = "1.7rem";
+
+
+// Class Manipulation
+// This will add a class to the element.
+const h1 = document.querySelector("h1");
+h1.classList.add("heading");
+console.log(h1.classList);
+
+// This will remove a class from the element.
+h1.classList.remove("heading");
+console.log(h1.classList);
+
+// This returns true if class is present else false.
+const isClass = h1.classList.contains("heading");
+console.log(isClass);
+
+// This will toggle a class on the element.
+h1.classList.toggle("heading");
+console.log(h1.classList);
+
+// This will replace an existing class with a new class.
+h1.classList.replace("heading", "head1");
+console.log(h1.classList);
