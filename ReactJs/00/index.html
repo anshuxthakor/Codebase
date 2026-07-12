@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReactJs</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Helvetica Neue Light";
+        font-weight: 500;
+        color: white;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        background: #1b1e20;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+      }
+      .dom-h1 {
+        position: absolute;
+        top: 10%;
+        font-size: 30px;
+        color: red;
+      }
+      #root{
+        position: absolute;
+        bottom: 10%;
+      }
+      #root h1 span {
+        font-size: 30px;
+        color: #58ea82;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to ReactJs</h1>
+    <div id="root"></div>
+
+    <!-- Load React and ReactDOM from a CDN -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
