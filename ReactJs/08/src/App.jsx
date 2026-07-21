@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Login from './components/Login'
+import Register from './components/Register'
 
 const App = () => {
+  const [toggle, setToggle] = useState();
+
   return (
-    <div>
-      <h1>Hello world</h1>
+    <div className='app'>
+      {toggle ? <Login setToggle={setToggle} /> : <Register setToggle={setToggle} />}
     </div>
   )
 }

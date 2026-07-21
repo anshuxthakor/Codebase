@@ -1,18 +1,316 @@
+@font-face {
+  font-family: 'font';
+  src: url('./font.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Helvetica Neue Light';
-  font-weight: 500;
-  color: white;
 }
-html,
-body {
+
+#root, html, body {
   height: 100%;
   width: 100%;
 }
 
-body {
-  background: #1B1E20;
+.app {
+  height: 100%;
+  width: 100%;
+  background-color: #1B1E20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.page {
+  height: 70%;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: black;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.left {
+  height: 100%;
+  width: 100%;
+  background-color: #3EBB9E;
+}
+
+.right {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.right h1 {
+  font-size: 70px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+  font-family: 'font';
+}
+
+.right form{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 5px;
+}
+
+.right form input {
+  height: 40px;
+  padding: 0 4px;
+  font-size: 18px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #E4E7EB;
+  border-radius: 0;
+  outline: none;
+  background-color: transparent;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.right form input:hover {
+  border-bottom-color: #B8BDC4;
+}
+
+.right form input:focus {
+  border-bottom-color: #3EBB9E;
+}
+
+.right form input::placeholder {
+  color: #A0A5AC;
+  transition: color 0.15s ease;
+}
+
+.right form input:focus::placeholder {
+  color: #C7CBD1;
+}
+
+.right form input:not(:placeholder-shown):invalid {
+  border-bottom-color: #E05A5A;
+}
+
+.right form input:not(:placeholder-shown):valid {
+  border-bottom-color: #3EBB9E;
+}
+
+.right form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #333;
+}
+
+.right form button {
+  margin-top: 20px;
+  background-color: #3EBB9E;
+  font-weight: 600;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.right form button:active {
+  transform: scale(0.95);
+}
+
+.right p {
+  margin-top: 40px;
+  font-size: 15px;
+  color: black;
+}
+
+.right p span {
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: all 0.1s ease;
+}
+
+.right p span:hover {
+  color: #3EBB9E ;
+  text-decoration: underline;
+}
+
+.left {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(160deg, #48CDAA 0%, #2a8f77 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+  overflow: hidden;
+  color: white;
+  text-align: left;
+}
+
+.left::before {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  top: -90px;
+  right: -90px;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  bottom: -60px;
+  left: -50px;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  z-index: 1;
+}
+
+.left-content {
+  z-index: 1;
+}
+
+.left-content h2 {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.left-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 320px;
+}
+
+.left-footer {
+  z-index: 1;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .page {
+    width: 85%;
+    height: 80%;
+  }
+
+  .right h1 {
+    font-size: 50px;
+  }
+
+  .left-content h2 {
+    font-size: 28px;
+  }
+
+  .left {
+    padding: 35px;
+  }
+}
+
+/* Mobile — stack the two panels */
+@media (max-width: 650px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    width: 92%;
+    height: 90%;
+    border-radius: 20px;
+  }
+
+  .left {
+    height: auto;
+    min-height: 180px;
+    padding: 25px 30px;
+  }
+
+  .left-content h2 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .left-content p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .left-footer {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .right {
+    padding: 25px;
+  }
+
+  .right h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .right form {
+    width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .page {
+    width: 95%;
+    height: 95%;
+    border-radius: 14px;
+  }
+
+  .right h1 {
+    font-size: 30px;
+  }
+
+  .right form input {
+    font-size: 16px;
+  }
+
+  .right form button {
+    font-size: 17px;
+  }
+}
