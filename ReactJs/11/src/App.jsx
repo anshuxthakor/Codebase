@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Form from "./components/Form";
 import Navbar from "./components/Navbar";
 import UserCard from "./components/UserCard";
@@ -6,13 +6,8 @@ import UserCard from "./components/UserCard";
 const App = () => {
   const [toggle, setToggle] = useState(false);
   const [users, setUsers] = useState(() => {
-    const saved = localStorage.getItem("users");
-    return saved ? JSON.parse(saved) : [];
+    return JSON.parse(localStorage.getItem("users")) || [];
   });
-
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
 
   return (
     <div className="px-5 py-3 relative">
@@ -24,7 +19,7 @@ const App = () => {
       </div>
       {toggle && (
         <div className="fixed inset-0 bg-black/60 flex items-start justify-center pt-16">
-          <Form setToggle={setToggle} setUsers={setUsers} />
+          <Form setToggle={setToggle} setUsers={setUsers} users={users} />
         </div>
       )}
     </div>
