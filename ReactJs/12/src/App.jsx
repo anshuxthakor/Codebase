@@ -1,9 +1,10 @@
 import React from 'react'
+import AllComponents from './AllComponents'
 
 const App = () => {
   return (
-    <div>
-      <h1>Context Api</h1>
+    <div className='app'>
+      <AllComponents />
     </div>
   )
 }
