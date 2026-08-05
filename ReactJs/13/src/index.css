@@ -14,5 +14,61 @@ body {
 
 body {
   background: #1B1E20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid skyblue;
+  padding-inline: 100px;
+  padding-block: 30px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.num {
+  font-size: 5rem;
+  margin-bottom: 5px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background: #50C878;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-weight: bold;
+}
+
+.toggle {
+  font-size: 1.5rem;
+  padding: 3px 12px;
+  background: #FF4500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-weight: bold;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.btn:active, .toggle:active {
+  transform: scale(0.95);
+}
+
+.file {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  color: #FF4500;
+}
