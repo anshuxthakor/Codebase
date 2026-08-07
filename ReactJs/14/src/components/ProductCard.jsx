@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { useContext } from "react";
+import { Context } from "../context/MyContext";
 
 function loadFontsOnce() {
   if (document.getElementById("product-card-fonts")) return;
@@ -43,6 +45,8 @@ export default function ProductCard({ product }) {
   }, []);
 
   const { id, title, price, image, rating, category } = product;
+  const { cart, addToCart, updateQty } = useContext(Context);
+  const cartItem = cart.find((item) => item.id === id);
 
   const words = title.split(" ");
   const brand = words.slice(0, 3).join(" ");
@@ -100,8 +104,7 @@ export default function ProductCard({ product }) {
           style={{
             background: "#2F4A3C",
             transform: "rotate(7deg)",
-            clipPath:
-              "polygon(0 0,100% 0,100% 78%,50% 100%,0 78%)",
+            clipPath: "polygon(0 0,100% 0,100% 78%,50% 100%,0 78%)",
           }}
         >
           <span
@@ -191,17 +194,59 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* Button */}
-        <button
-          className="mt-auto w-full py-3 uppercase tracking-wider font-semibold transition-all duration-100 active:scale-95 cursor-pointer"
-          style={{
-            background: "#2F4A3C",
-            color: "#EFE6D0",
-            fontFamily: "'Inter', sans-serif",
-            
-          }}
-        >
-          Add To Cart
-        </button>
+        {cartItem ? (
+          <div
+            className="mt-auto w-full flex items-center justify-center gap-3 border"
+            style={{
+              borderColor: "#C9BB98",
+              background: "#2F4A3C",
+            }}
+          >
+            <button
+              onClick={() => updateQty(id, -1)}
+              className="w-full h-11 flex items-center justify-center text-lg border active:scale-90 transition-all duration-100 cursor-pointer"
+              style={{
+                borderColor: "#C9BB98",
+                color: "#EFE6D0",
+              }}
+            >
+              −
+            </button>
+
+            <span
+              className="w-50 text-center text-base font-semibold"
+              style={{
+                color: "#EFE6D0",
+                fontFamily: "'IBM Plex Mono', monospace",
+              }}
+            >
+              {cartItem.qty}
+            </span>
+
+            <button
+              onClick={() => updateQty(id, 1)}
+              className="w-full h-11 flex items-center justify-center text-lg border active:scale-90 transition-all duration-100 cursor-pointer"
+              style={{
+                borderColor: "#C9BB98",
+                color: "#EFE6D0",
+              }}
+            >
+              +
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => addToCart(product)}
+            className="mt-auto w-full py-3 uppercase tracking-wider font-semibold transition-all duration-100 active:scale-95 cursor-pointer"
+            style={{
+              background: "#2F4A3C",
+              color: "#EFE6D0",
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
+            Add To Cart
+          </button>
+        )}
       </div>
     </div>
   );
