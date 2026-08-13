@@ -16,14 +16,14 @@ const AppRoutes = () => {
       element: <AuthLayout />,
       children: [
         {
-          path: "login",
+          path: "",
           element: <Login />,
         },
-        {
-          path: "register",
-          element: <Register />,
-        },
       ],
+    },
+    {
+      path: "/register",
+      element: <Register />,
     },
     {
       path: "/main",

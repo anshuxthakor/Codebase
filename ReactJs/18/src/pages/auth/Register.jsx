@@ -1,20 +1,26 @@
 import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import BlueprintFrame from "../../components/BlueprintFrame";
-import DrawingHeader from "../../components/DrawingHeader";
-import AuthTitle from "../../components/AuthTitle";
-import FormField from "../../components/FormField";
-import PasswordField from "../../components/PasswordField";
-import RulerDivider from "../../components/RulerDivider";
-import AuthFooter from "../../components/AuthFooter";
+import BlueprintFrame from "../../components/utils/BlueprintFrame";
+import DrawingHeader from "../../components/utils/DrawingHeader";
+import AuthTitle from "../../components/utils/AuthTitle";
+import FormField from "../../components/utils/FormField";
+import PasswordField from "../../components/utils/PasswordField";
+import RulerDivider from "../../components/utils/RulerDivider";
+import AuthFooter from "../../components/utils/AuthFooter";
 import { Auth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+
+// Initialize with some default users
+import { userArray } from "../../../data"; 
 
 const Register = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const { registeredUser, setRegisteredUser, setLoggedInUser } = useContext(Auth);
+
+  // Just to have some initial data
+  localStorage.setItem("registeredUser", JSON.stringify(userArray));
 
   const onSubmit = (data) => {
     let arr = [...registeredUser, data];
@@ -22,7 +28,8 @@ const Register = () => {
     localStorage.setItem("registeredUser", JSON.stringify(arr));
     setLoggedInUser(data);
     localStorage.setItem("loggedInUser", JSON.stringify(data));
-    navigate("/main");
+    navigate("/login");
+    
     toast.success("Account created successfully");
     reset();
   };
@@ -93,7 +100,7 @@ const Register = () => {
       <AuthFooter
         prompt="Already registered?"
         actionLabel="Log in"
-        onAction={() => navigate("/login")}
+        onAction={() => navigate("/")}
       />
     </BlueprintFrame>
   );
