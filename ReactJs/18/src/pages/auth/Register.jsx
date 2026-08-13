@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-import { set, useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useAuth } from "../../hooks/useAuth";
 import BlueprintFrame from "../../components/utils/BlueprintFrame";
 import DrawingHeader from "../../components/utils/DrawingHeader";
 import AuthTitle from "../../components/utils/AuthTitle";
@@ -8,38 +6,14 @@ import FormField from "../../components/utils/FormField";
 import PasswordField from "../../components/utils/PasswordField";
 import RulerDivider from "../../components/utils/RulerDivider";
 import AuthFooter from "../../components/utils/AuthFooter";
-import { Auth } from "../../context/AuthContext";
-import { toast } from "react-toastify";
-
-// Initialize with some default users
-import { userArray } from "../../../data"; 
 
 const Register = () => {
-  const navigate = useNavigate();
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const { registeredUser, setRegisteredUser, setLoggedInUser } = useContext(Auth);
-
-  // Just to have some initial data
-  localStorage.setItem("registeredUser", JSON.stringify(userArray));
-
-  const onSubmit = (data) => {
-    let arr = [...registeredUser, data];
-    setRegisteredUser(arr);
-    localStorage.setItem("registeredUser", JSON.stringify(arr));
-    setLoggedInUser(data);
-    localStorage.setItem("loggedInUser", JSON.stringify(data));
-    navigate("/login");
-    
-    toast.success("Account created successfully");
-    reset();
-  };
-
+  const { register, handleSubmit, reset, errors, registerFormSubmit, navigate } = useAuth();
   return (
     <BlueprintFrame>
       <DrawingHeader label="dwg no. 002 — register" />
       <AuthTitle title="New account" subtitle="three fields, fully specified" />
-
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+      <form onSubmit={handleSubmit(registerFormSubmit)} className="space-y-4" noValidate>
         <FormField
           id="name"
           letter="A"
@@ -54,7 +28,6 @@ const Register = () => {
             pattern: { value: /^[A-Za-z\s]+$/, message: "letters and spaces only" },
           })}
         />
-
         <FormField
           id="username"
           letter="B"
@@ -72,7 +45,6 @@ const Register = () => {
             },
           })}
         />
-
         <PasswordField
           id="password"
           letter="C"
@@ -86,7 +58,6 @@ const Register = () => {
             },
           })}
         />
-
         <button
           type="submit"
           className="w-full bg-[#16324f] text-white text-sm font-bold uppercase tracking-wide py-2.5 hover:bg-[#d7263d] active:scale-95 transition-all duration-100 cursor-pointer mt-1"
@@ -94,9 +65,7 @@ const Register = () => {
           Create account
         </button>
       </form>
-
       <RulerDivider />
-
       <AuthFooter
         prompt="Already registered?"
         actionLabel="Log in"

@@ -7,7 +7,6 @@ const ProtectedRoutes = () => {
   const { loggedInUser } = useContext(Auth);
 
   if (!loggedInUser) {
-    toast.error("You need to login first to access this page.");
     return <Navigate to="/" />;
   }
 

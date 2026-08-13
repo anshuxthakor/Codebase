@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import UserCard from "../components/UserCard";
+import { axiosInstance } from "../config/axiosInstance";
 
 const Users = () => {
   const [usersData, setUsersData] = useState([]);
@@ -9,8 +9,8 @@ const Users = () => {
   const getUsersData = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("https://fakestoreapi.com/users");
-      console.log(response.data);
+      const response = await axiosInstance.get("/users");
+      console.log("Users Api Response —> ", response);
       setUsersData(response.data);
     } catch (error) {
       console.error("Error fetching users data:", error);

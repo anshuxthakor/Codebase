@@ -3,9 +3,10 @@ import DrawingHeader from "./utils/DrawingHeader";
 import RulerDivider from "./utils/RulerDivider";
 import NavItem from "./NavItem";
 import { Auth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { loggedInUser, setLoggedInUser } = useContext(Auth);
+  const { setLoggedInUser } = useContext(Auth);
 
   return (
     <div className="h-full min-h-0 bg-white border-[1.5px] border-[#16324f] px-5 py-5 flex flex-col overflow-auto scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
@@ -38,6 +39,7 @@ const Navbar = () => {
           type="button"
           onClick={() => {
             localStorage.removeItem("loggedInUser");
+            toast.warn("Logged out successfully");
             setLoggedInUser(null);
           }}
           className="w-full bg-[#16324f] text-white text-sm font-bold uppercase tracking-wide py-2.5 hover:bg-[#d7263d] active:scale-95 transition-all duration-100 cursor-pointer"
